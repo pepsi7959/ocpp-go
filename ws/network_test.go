@@ -158,7 +158,7 @@ func (s *NetworkTestSuite) TestClientAutoReconnect() {
 	// Close all connection from server side
 	time.Sleep(500 * time.Millisecond)
 	for _, s := range s.server.connections {
-		err = s.connection.Close()
+		err = s.connection.Close(websocket.CloseNormalClosure, "")
 		require.Nil(t, err)
 	}
 	// Wait for disconnect to propagate
