@@ -268,7 +268,7 @@ func TestServerStartErrors(t *testing.T) {
 	go wsServer.Start(serverPort, serverPath)
 	time.Sleep(100 * time.Millisecond)
 	// Starting server again throws error
-	go wsServer.Start(serverPort, serverPath)
+	wsServer.Start(serverPort, serverPath)
 	r := <-triggerC
 	require.True(t, r)
 	wsServer.Stop()
